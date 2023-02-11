@@ -1,53 +1,57 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  height: 90vh;
+  padding: 30px 70px;
+  width: fit-content;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
+  border-radius: 15px;
   align-items: center;
   flex-flow: column;
-`
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  background-color: #F1F1F1;
+  box-shadow: 0px 6px 5px 0px #6969691f;
+  position: relative;
+  gap: 3rem;
+ `
 export const Second = styled.h1`
-  background-color #99ffff;
-  padding: 2rem 6rem;
   font-size: 6.25rem;
   font-weight: 400;    
-  border-radius: 15px;
-  box-shadow: 0px 10px 8px 0px #696969;
+  margin: 0;
+  color:#38393D;
 `
 export const ConfigButtonInteract = styled.div`
-    margin: 1.25rem 0 1.25rem 0;
-    display: flex;
-    flex-direction: column;
-
+  display: flex;
+  flex-direction: column;
 `
-
-export const  Container = styled.div`
+export const Container = styled.div`
   display: flex;
   gap: 3rem;
 `
-
 export const Button = styled.button`
-  padding: 0.60rem 2.75rem;
-  border-radius: 10px;
-  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #489FB5;
   margin: 0.25rem;
-  background-color: #99ffff;
-  box-shadow: 0px 10px 8px 0px #696969;
+  background-color:#489FB5;
+  box-shadow: 0px 4px 2px 0px #6969691f;
+  color: white;
+  padding: 8px 0;
+  width: 152px;
   :hover {
-      cursor: pointer; 
-      background-color:  #b3b3b3;
+    cursor: pointer; 
+    background-color:  #b3b3b3;
+  }
+  :disabled:hover {
+    cursor: not-allowed;
+
   }
 `
-export const ButtonTime = styled.button`
-  padding: 0.60rem 1.25rem;
-  border-radius: 10px;
-  border: 1px solid #FFFFFF;
-  margin: 0.25rem;
-  background-color: #99ffff;
-  box-shadow: 0px 10px 8px 0px #696969;
-  :hover {
-      cursor: pointer;
-      background-color:  #b3b3b3;
-  } 
+export const Divider = styled.div`
+  min-height: 1px;
+  width: 100%;
+  background-color: #E4E4E4;
+  position: absolute;
 `

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Second, ConfigButtonInteract, Button, ButtonTime,Wrapper, Container } from './styles';
+import { Second, ConfigButtonInteract, Wrapper, Container, Button, Divider } from './styles';
 
 function Timer() {
   const [totalTimeInSeconds, setTotalTimeInSeconds] = useState(0);
@@ -20,8 +20,8 @@ function Timer() {
       }, 1000);
     }
     if (totalTimeInSeconds === 0) {
-      alert('Chegou ao fim')
       clearInterval(intervalId);
+      alert('Chegou ao fim')
     }
     return () => {
       clearInterval(intervalId);
@@ -50,7 +50,8 @@ function Timer() {
         :
         {second.toString().padStart(2, "0")}
       </Second>
-        <Container>
+      <Divider/>
+      <Container>
             <ConfigButtonInteract>
               <Button
                 onClick={() => {
@@ -78,16 +79,15 @@ function Timer() {
               </Button>
             </ConfigButtonInteract>
             <ConfigButtonInteract>
-                <ButtonTime onClick={addMiddleMinute} disabled={isActive}>  
+                <Button onClick={addMiddleMinute} disabled={isActive}>  
                 +30 SECOND
-              </ButtonTime>
-        
-              <ButtonTime onClick={addOneMinute} disabled={isActive}>
+              </Button>
+              <Button onClick={addOneMinute} disabled={isActive}>
                 +1 MINUTE
-              </ButtonTime>
-              <ButtonTime onClick={addFiveMinute} disabled={isActive}>
+              </Button>
+              <Button onClick={addFiveMinute} disabled={isActive}>
                 +5 MINUTES
-              </ButtonTime>
+              </Button>
             </ConfigButtonInteract>
           </ Container>
     </Wrapper>
