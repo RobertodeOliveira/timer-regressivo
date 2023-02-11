@@ -1,12 +1,16 @@
-
-import React, { useEffect, useState } from 'react';
-import { Second, ConfigButtonInteract, Button, ButtonTime,Wrapper } from './styles';
+import { useEffect, useState } from 'react';
+import { Second, ConfigButtonInteract, Button, ButtonTime,Wrapper, Container } from './styles';
 
 function Timer() {
-  const [totalTimeInSeconds, setTotalTimeInSeconds] = useState(0);
+  const [totalTimeInSeconds, setTotalTimeInSeconds] = useState(5);
   const [isActive, setIsActive] = useState(false);
   const minutes = Math.floor(totalTimeInSeconds / 60);
   const second = totalTimeInSeconds % 60;
+
+  // function playSound() {
+  //   const audio = new Audio(`https://youtu.be/9b-m4bJ89pI`);
+  //   audio.play();
+  // }
 
   useEffect(() => {
     let intervalId: any;
@@ -16,6 +20,7 @@ function Timer() {
       }, 1000);
     }
     if (totalTimeInSeconds === 0) {
+      alert('Chegou ao fim')
       clearInterval(intervalId);
     }
     return () => {
@@ -45,100 +50,48 @@ function Timer() {
         :
         {second.toString().padStart(2, "0")}
       </Second>
-      <ConfigButtonInteract>
-        <Button
-          onClick={() => {
-            setIsActive(true);
-          }}
-          disabled={isActive}
-        >
-          Start
-        </Button>
-        <Button
-          onClick={() => {
-            setIsActive(false);
-          }}
-          disabled={!isActive}
-        >
-          Stop
-        </Button>
-        <Button
-          onClick={() => {
-            setTotalTimeInSeconds(0);
-          }}
-          disabled={isActive}
-        >
-          Reset
-        </Button>
-      </ConfigButtonInteract>
-
-      <ConfigButtonInteract>
-        <ButtonTime onClick={addMiddleMinute}>
-          +30 Segundos
-        </ButtonTime>
-        <ButtonTime onClick={addOneMinute}>
-          +1 Minuto
-        </ButtonTime>
-        <ButtonTime onClick={addFiveMinute}>
-          +5 Minutos
-        </ButtonTime>
-      </ConfigButtonInteract>
+        <Container>
+            <ConfigButtonInteract>
+              <Button
+                onClick={() => {
+                  setIsActive(true);
+                }}
+                disabled={isActive}
+                >
+                START
+              </Button>
+              <Button
+                onClick={() => {
+                  setIsActive(false);
+                }}
+                disabled={!isActive}
+                >
+                STOP
+              </Button>
+              <Button
+                onClick={() => {
+                  setTotalTimeInSeconds(0);
+                }}
+                disabled={isActive}
+                >
+                RESET
+              </Button>
+            </ConfigButtonInteract>
+            <ConfigButtonInteract>
+                <ButtonTime onClick={addMiddleMinute} disabled={isActive}>  
+                +30 SECOND
+              </ButtonTime>
+        
+              <ButtonTime onClick={addOneMinute} disabled={isActive}>
+                +1 MINUTE
+              </ButtonTime>
+              <ButtonTime onClick={addFiveMinute} disabled={isActive}>
+                +5 MINUTES
+              </ButtonTime>
+            </ConfigButtonInteract>
+          </ Container>
     </Wrapper>
   );
 };
 
 export default Timer;
-
-// import * as S from "./styles";
-// import React, { useEffect, useState } from "react";
-
-// const Timer = () => {
-
-
-//     const [totalTime, setTotalTime] = useState(5);
-//     const minutes = Math.floor(totalTime / 60);
-//     const second = totalTime % 60;
-
-//   function addMiddleMinute() {
-//     setTotalTime((currentTotalTime) => currentTotalTime + 30);
-//     console.log(totalTime);
-//   }
-
-//   function addOneMinute() {
-//     setTotalTime((currentTotalTime) => currentTotalTime + 1 * 60);
-//     console.log(totalTime);
-//   }
-
-//   function addFiveMinute() {
-//     setTotalTime((currentTotalTime) => currentTotalTime + 5 * 60);
-//     console.log(totalTime);
-//   }
-
-//   useEffect(() => {
-//     if (totalTime > 0) {
-//       const timer = setTimeout(() => {
-//           setTotalTime((currentTotalTime) => currentTotalTime - 1);
-//           console.log("-1");
-//         }, 1000);
-//         return () => {
-//             clearTimeout(timer);
-//         };
-//     } else {
-//         alert('Acabou o Tempo')
-//     }
-//   }, [totalTime]);
-//   return (
-//     <S.Wrapper>
-//       <S.Timer>
-//         {minutes.toString().padStart(2, "0")}
-//         :
-//         {second.toString().padStart(2, "0")}
-//       </S.Timer>
-//       <S.Config>
-//         <S.Button onClick={addMiddleMinute}> + 30 segundos </S.Button>
-//         <S.Button onClick={addOneMinute}> + 01 minuto </S.Button>
-//         <S.Button onClick={addFiveMinute}> + 05 minutos </S.Button>
-//       </S.Config>
-//     </S.Wrapper>
-//   );
-// };
