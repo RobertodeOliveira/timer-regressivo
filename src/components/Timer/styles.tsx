@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 30px 70px;
+  padding: 3rem 5rem;
   width: fit-content;
   margin: 0 auto;
   display: flex;
@@ -17,7 +17,8 @@ export const Wrapper = styled.div`
   gap: 3rem;
  `
 export const Second = styled.h1`
-  font-size: 6.25rem;
+  font-size: 10rem;
+  line-height: 0.7;
   font-weight: 400;    
   margin: 0;
   color:#38393D;
@@ -33,7 +34,7 @@ export const Container = styled.div`
 export const Button = styled.button`
   border-radius: 5px;
   font-family: 'Montserrat', sans-serif;
-  border: 1px solid #489FB5;
+  border: none;
   margin: 0.25rem;
   background-color:#489FB5;
   box-shadow: 0px 4px 2px 0px #6969691f;
@@ -42,16 +43,15 @@ export const Button = styled.button`
   width: 152px;
   :hover {
     cursor: pointer; 
-    background-color:  #b3b3b3;
+    background-color:  #52adc4;
   }
-  :disabled:hover {
+  &:disabled {
     cursor: not-allowed;
-
+    background-color: #489fb588;
   }
 `
 export const Divider = styled.div`
   min-height: 1px;
   width: 100%;
   background-color: #E4E4E4;
-  position: absolute;
 `
