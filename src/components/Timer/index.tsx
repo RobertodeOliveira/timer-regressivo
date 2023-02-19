@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Second, ConfigButtonInteract, Wrapper, Container, Button, Divider } from './styles';
 
 function Timer() {
-  const [totalTimeInSeconds, setTotalTimeInSeconds] = useState(0);
+  const [totalTimeInSeconds, setTotalTimeInSeconds] = useState(5);
   const [isActive, setIsActive] = useState(false);
   const minutes = Math.floor(totalTimeInSeconds / 60);
   const second = totalTimeInSeconds % 60;
@@ -11,6 +11,12 @@ function Timer() {
   //   const audio = new Audio(`https://youtu.be/9b-m4bJ89pI`);
   //   audio.play();
   // }
+
+  function playSound() {
+    const song: HTMLAudioElement = new Audio('./song.mp3')
+
+    song.play();
+  }
 
   useEffect(() => {
     let intervalId: any;
@@ -21,7 +27,7 @@ function Timer() {
     }
     if (totalTimeInSeconds === 0) {
       clearInterval(intervalId);
-      alert('Chegou ao fim')
+      playSound()
     }
     return () => {
       clearInterval(intervalId);
@@ -52,44 +58,44 @@ function Timer() {
       </Second>
       <Divider/>
       <Container>
-            <ConfigButtonInteract>
-              <Button
-                onClick={() => {
-                  setIsActive(true);
-                }}
-                disabled={isActive}
-                >
-                START
-              </Button>
-              <Button
-                onClick={() => {
-                  setIsActive(false);
-                }}
-                disabled={!isActive}
-                >
-                STOP
-              </Button>
-              <Button
-                onClick={() => {
-                  setTotalTimeInSeconds(0);
-                }}
-                disabled={isActive}
-                >
-                RESET
-              </Button>
-            </ConfigButtonInteract>
-            <ConfigButtonInteract>
-                <Button onClick={addMiddleMinute} disabled={isActive}>  
-                +30 SECOND
-              </Button>
-              <Button onClick={addOneMinute} disabled={isActive}>
-                +1 MINUTE
-              </Button>
-              <Button onClick={addFiveMinute} disabled={isActive}>
-                +5 MINUTES
-              </Button>
-            </ConfigButtonInteract>
-          </ Container>
+        <ConfigButtonInteract>
+          <Button
+            onClick={() => {
+              setIsActive(true);
+            }}
+            disabled={isActive}
+            >
+            START
+          </Button>
+          <Button
+            onClick={() => {
+              setIsActive(false);
+            }}
+            disabled={!isActive}
+            >
+            STOP
+          </Button>
+          <Button
+            onClick={() => {
+              setTotalTimeInSeconds(0);
+            }}
+            disabled={isActive}
+            >
+            RESET
+          </Button>
+        </ConfigButtonInteract>
+        <ConfigButtonInteract>
+            <Button onClick={addMiddleMinute} disabled={isActive}>  
+            +30 SECOND
+          </Button>
+          <Button onClick={addOneMinute} disabled={isActive}>
+            +1 MINUTE
+          </Button>
+          <Button onClick={addFiveMinute} disabled={isActive}>
+            +5 MINUTES
+          </Button>
+        </ConfigButtonInteract>
+      </ Container>
     </Wrapper>
   );
 };
