@@ -11,18 +11,37 @@ export const Wrapper = styled.div`
   flex-flow: column;
   font-family: 'Roboto Mono', monospace;
   font-weight: 400;
-  background-color: #F1F1F1;
-  box-shadow: 0px 6px 5px 0px #6969691f;
+  background-color: #192c48;
+  box-shadow: 0px 4px 3px 2px	#162b40;
   position: relative;
   gap: 3rem;
+  
+
+  ::before{
+    content: '';
+    position: absolute;
+    background-color: #1E90FF;
+    top: 110%;
+    left: 0;
+    width: 80%;
+    height: 80%;
+
+    transform: perspective(1) rotateX(0.22deg) scale(2.1, 0.9); 
+    filter: blur(10em);
+  }
  `
-export const Second = styled.h1`
-  font-size: 10rem;
+export const Second = styled.div`
+
+  display: flex;
+  font-size: 9rem;
   line-height: 0.7;
-  font-weight: 400;    
+  font-weight: 400;
   margin: 0;
-  color:#38393D;
+  color: #ece2e2;
+  text-shadow: 2px 2px 	#1E90FF, 6px 2px 30px #1E90FF;
+  padding: 2px;
 `
+
 export const ConfigButtonInteract = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,10 +51,11 @@ export const Container = styled.div`
   gap: 3rem;
 `
 export const Button = styled.button`
-  border-radius: 5px;
+  border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
   border: none;
   margin: 0.25rem;
+  /* background-color:#489FB5; */
   background-color:#489FB5;
   box-shadow: 0px 4px 2px 0px #6969691f;
   color: white;
@@ -43,7 +63,7 @@ export const Button = styled.button`
   width: 152px;
   :hover {
     cursor: pointer; 
-    background-color:  #52adc4;
+    box-shadow: 0px 1px 12px -1px white;
   }
   &:disabled {
     cursor: not-allowed;

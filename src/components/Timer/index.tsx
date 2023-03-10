@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Second, ConfigButtonInteract, Wrapper, Container, Button, Divider } from './styles';
+import * as S from './styles';
 
 function Timer() {
-  const [totalTimeInSeconds, setTotalTimeInSeconds] = useState(5);
+  const [totalTimeInSeconds, setTotalTimeInSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const minutes = Math.floor(totalTimeInSeconds / 60);
   const second = totalTimeInSeconds % 60;
 
-  // function playSound() {
-  //   const audio = new Audio(`https://youtu.be/9b-m4bJ89pI`);
-  //   audio.play();
-  // }
 
   function playSound() {
     const song: HTMLAudioElement = new Audio('./song.mp3')
@@ -50,53 +46,53 @@ function Timer() {
   }
 
   return (
-    <Wrapper>
-      <Second>
+    <S.Wrapper>
+      <S.Second>
         {minutes.toString().padStart(2, "0")}
         :
         {second.toString().padStart(2, "0")}
-      </Second>
-      <Divider/>
-      <Container>
-        <ConfigButtonInteract>
-          <Button
+      </S.Second>
+      <S.Divider/>
+      <S.Container>
+        <S.ConfigButtonInteract>
+          <S.Button
             onClick={() => {
               setIsActive(true);
             }}
             disabled={isActive}
             >
             START
-          </Button>
-          <Button
+          </S.Button>
+          <S.Button
             onClick={() => {
               setIsActive(false);
             }}
             disabled={!isActive}
             >
             STOP
-          </Button>
-          <Button
+          </S.Button>
+          <S.Button
             onClick={() => {
               setTotalTimeInSeconds(0);
             }}
             disabled={isActive}
             >
             RESET
-          </Button>
-        </ConfigButtonInteract>
-        <ConfigButtonInteract>
-            <Button onClick={addMiddleMinute} disabled={isActive}>  
+          </S.Button>
+        </S.ConfigButtonInteract>
+        <S.ConfigButtonInteract>
+            <S.Button onClick={addMiddleMinute} disabled={isActive}>  
             +30 SECOND
-          </Button>
-          <Button onClick={addOneMinute} disabled={isActive}>
+          </S.Button>
+          <S.Button onClick={addOneMinute} disabled={isActive}>
             +1 MINUTE
-          </Button>
-          <Button onClick={addFiveMinute} disabled={isActive}>
+          </S.Button>
+          <S.Button onClick={addFiveMinute} disabled={isActive}>
             +5 MINUTES
-          </Button>
-        </ConfigButtonInteract>
-      </ Container>
-    </Wrapper>
+          </S.Button>
+        </S.ConfigButtonInteract>
+      </S.Container>
+    </S.Wrapper>
   );
 };
 
